@@ -1,0 +1,10 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item android:id="@+id/openItsLocationOnTheMap"
+          android:title="Open its location on the map"/>
+    <item android:title="Open the official webside"
+          android:id="@+id/openTheOfficialWebside" />
+    <item android:title="Display page that gives information about the college"
+          android:id="@+id/displayPageThatGivesInformationAboutTheCollege" />
+
+</menu>

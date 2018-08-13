@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity"
+    android:orientation="vertical">
+
+    <Button
+    android:id="@+id/startActivity"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:text="@string/start_activity_explicit"
+    android:onClick="startSecondActicity"
+        />
+    <Button
+        android:id="@+id/startWebpageActivity"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/start_activity_implicit"
+        android:onClick="startWebpageActivity"
+        />
+    <Button
+        android:id="@+id/clickMe"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/click_me"
+        android:onClick="getData"
+        />
+    <TextView
+        android:id="@+id/tvResult"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Hello World!"
+        />
+<!--1.Create a new project-->
+    <!--2.Go to your layout file and change constaint layout to linear layout
+    3. Remove  xmlns:app="http://schemas.android.com/apk/res-auto"
+    4.Add a utton-->
+</LinearLayout>
