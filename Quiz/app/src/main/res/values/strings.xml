@@ -1,0 +1,7 @@
+<resources>
+    <string name="app_name">Quiz</string>
+    <string name="start">Start</string>
+    <string name="enterEmail">Enter a email</string>
+    <string name="quizHistory">Quiz History</string>
+    <string name="startNewQuiz"> Start a new quiz</string>
+</resources>
