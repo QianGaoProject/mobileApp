@@ -27,6 +27,7 @@
         android:ems="10"
         android:hint="@string/enterEmail"
         android:inputType="textEmailAddress"
+        android:text="gao32767@gmail.com"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 

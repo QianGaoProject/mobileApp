@@ -8,17 +8,16 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.example.qian.quiz.R;
-import com.example.qian.quiz.model.DataResponse;
-import com.example.qian.quiz.model.Question;
+import com.example.qian.quiz.api.Quiz;
 
 import java.util.List;
 
+
 public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.viewHolder> {
-    private List<DataResponse> questionsList;
+    private List<Quiz> questionsList;
 
-    public QuestionAdapter(List<DataResponse> questionsList) {
+    public QuestionAdapter(List<Quiz> questionsList) {
         this.questionsList = questionsList;
-
     }
 
     @NonNull
@@ -30,8 +29,8 @@ public class QuestionAdapter extends RecyclerView.Adapter<QuestionAdapter.viewHo
 
     @Override
     public void onBindViewHolder(@NonNull viewHolder holder, int position) {
-        Question question = questionsList.get(position);
-        holder.tv.setText(""  );
+
+        holder.tv.setText("" + position);
     }
 
     @Override
