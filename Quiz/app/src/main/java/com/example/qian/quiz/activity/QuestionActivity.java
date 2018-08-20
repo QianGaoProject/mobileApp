@@ -15,9 +15,9 @@ import android.widget.Toast;
 import com.example.qian.quiz.R;
 import com.example.qian.quiz.api.ApiClient;
 import com.example.qian.quiz.api.ApiInterface;
-import com.example.qian.quiz.api.DataResponse;
-import com.example.qian.quiz.model.Questions;
 import com.example.qian.quiz.adapter.QuestionAdapter;
+import com.example.qian.quiz.model.DataResponse;
+import com.example.qian.quiz.model.Question;
 
 import java.util.List;
 
@@ -42,21 +42,22 @@ public class QuestionActivity extends AppCompatActivity {
         setContentView(R.layout.activity_question);
 
 
-        progressBar.findViewById(R.id.showProgressBar);
+        progressBar=findViewById(R.id.showProgressBar);
         progressBar.setVisibility(View.VISIBLE);
 
         recyclerView =findViewById(R.id.resultsQuestion);
         layoutManager = new GridLayoutManager(this,2);
         recyclerView.setHasFixedSize(true);
         recyclerView.setLayoutManager(layoutManager);
+
+        //api
         apiInterface = ApiClient.getApiClient().create(ApiInterface.class);
-
-
-        Call<List<DataResponse>> call = apiInterface.getQuestions(pageNumber,pageSize);
+        Call<List<DataResponse>> call = apiInterface.getQuestions();
         call.enqueue(new Callback<List<DataResponse>>() {
             @Override
             public void onResponse(Call<List<DataResponse>> call, Response<List<DataResponse>> response) {
-                List<Questions> questions = response.body().get(0).getQustions();
+                List<Question> questions = response.body().get(0).getQuestions();
+
                 adapter = new QuestionAdapter(questions);
                 recyclerView.setAdapter(adapter);
                 Toast.makeText(QuestionActivity.this,"First page is loaded...",Toast.LENGTH_SHORT).show();
@@ -70,24 +71,24 @@ public class QuestionActivity extends AppCompatActivity {
         });
     }
 
-    private void performPagination(){
-        Call<List<DataResponse>> call = apiInterface.getQuestions(pageNumber,pageSize);
-        call.enqueue(new Callback<List<DataResponse>>() {
-            @Override
-            public void onResponse(Call<List<DataResponse>> call, Response<List<DataResponse>> response) {
-                List<Questions> questions = response.body().get(0).getQustions();
-                adapter = new QuestionAdapter(questions);
-                recyclerView.setAdapter(adapter);
-                Toast.makeText(QuestionActivity.this,"First page is loaded...",Toast.LENGTH_SHORT).show();
-                progressBar.setVisibility(View.GONE);
-            }
-
-            @Override
-            public void onFailure(Call<List<DataResponse>> call, Throwable t) {
-
-            }
-        });
-    }
+//    private void performPagination(){
+//        Call<List<DataResponse>> call = apiInterface.getQuestions(pageNumber,pageSize);
+//        call.enqueue(new Callback<List<DataResponse>>() {
+//            @Override
+//            public void onResponse(Call<List<DataResponse>> call, Response<List<DataResponse>> response) {
+//                List<Questions> questions = response.body().get(0).getQustions();
+//                adapter = new QuestionAdapter(questions);
+//                recyclerView.setAdapter(adapter);
+//                Toast.makeText(QuestionActivity.this,"First page is loaded...",Toast.LENGTH_SHORT).show();
+//                progressBar.setVisibility(View.GONE);
+//            }
+//
+//            @Override
+//            public void onFailure(Call<List<DataResponse>> call, Throwable t) {
+//
+//            }
+//        });
+//    }
 
     public void onButtonClickSave(View v) {
 
